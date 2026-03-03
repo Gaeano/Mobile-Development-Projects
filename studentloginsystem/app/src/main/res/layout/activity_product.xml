@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#0A0A0A"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".productActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Shopping" />
+
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/shoe_image"
+                    android:layout_width="118dp"
+                    android:layout_height="114dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/flightcourt"/>
+
+                <TextView
+                    android:id="@+id/shoeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    tools:text="Flight Court" />
+
+                <TextView
+                    android:id="@+id/shoePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="20" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_add_flight"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="+"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#8DF762" />
+
+                    <TextView
+                        android:id="@+id/result_flight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        tools:text="0"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_minus_flight"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#E0E0E0" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/funshine_image"
+                    android:layout_width="118dp"
+                    android:layout_height="114dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/funshine" />
+
+                <TextView
+                    android:id="@+id/funshineTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    tools:text="Funshine"/>
+
+                <TextView
+                    android:id="@+id/funshinePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="10" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_plus_funshine"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="+"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#8DF762" />
+
+                    <TextView
+                        android:id="@+id/result_funshine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        tools:text="0"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_minus_funshine"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#E0E0E0" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/wingstop_image"
+                    android:layout_width="118dp"
+                    android:layout_height="114dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/wingstop" />
+
+                <TextView
+                    android:id="@+id/wingstopTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    tools:text="Wingstop"/>
+
+                <TextView
+                    android:id="@+id/wingstopPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="50" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_plus_wingstop"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="+"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#8DF762" />
+
+                    <TextView
+                        android:id="@+id/result_wingstop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        tools:text="0"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_minus_wingstop"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#E0E0E0" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="12dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/monitor_image"
+                    android:layout_width="118dp"
+                    android:layout_height="114dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/monitor" />
+
+                <TextView
+                    android:id="@+id/monitorTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp"
+                    tools:text="Monitor"/>
+
+                <TextView
+                    android:id="@+id/monitorPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="10" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_plus_monitor"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="+"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#8DF762" />
+
+                    <TextView
+                        android:id="@+id/result_monitor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        tools:text="0"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_minus_monitor"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        app:cornerRadius="20dp"
+                        app:backgroundTint="#E0E0E0" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_to_cart"
+        android:layout_width="220dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:text="Add to Cart"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:cornerRadius="28dp"
+        app:backgroundTint="#8DF762" />
+
+</LinearLayout>
