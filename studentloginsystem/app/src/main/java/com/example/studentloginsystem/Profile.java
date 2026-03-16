@@ -8,24 +8,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity {
 
     Button logoutBtn, backBtn, sortFilterBtn;
-
     TextView userNameResult, passResult, emptyCartText;
-
     LinearLayout cartContainer;
 
-    Product[] products;
+    ArrayList<Product> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +55,6 @@ public class Profile extends AppCompatActivity {
                 findViewById(R.id.monitorTotalPrice)
         };
 
-
         userNameResult = findViewById(R.id.username);
         passResult = findViewById(R.id.password);
 
@@ -71,77 +65,84 @@ public class Profile extends AppCompatActivity {
         backBtn = findViewById(R.id.backToShop);
         sortFilterBtn = findViewById(R.id.btnSortFilter);
 
-
         String user = getIntent().getStringExtra("user");
         String pass = getIntent().getStringExtra("pass");
-        String jsonProducts = getIntent().getStringExtra("products");
 
-        Gson gson = new Gson();
-        products = gson.fromJson(jsonProducts, Product[].class);
+        userNameResult.setText("Welcome " + user);
+        passResult.setText("Your current password is: " + pass);
 
-        userNameResult.setText("Welcome "+ user);
-        passResult.setText("Your current password is: "+ pass);
+        // 1. Retrieve the ArrayList directly using Serializable
+        productList = (ArrayList<Product>) getIntent().getSerializableExtra("products");
 
-        if (products == null || products[0].getQuantity() == 0 && products[1].getQuantity() == 0 && products[2].getQuantity() == 0 && products[3].getQuantity() == 0) {
+        // Safety check just in case the intent didn't contain the list
+        if (productList == null) {
+            productList = new ArrayList<>();
+        }
+
+        if (productList.isEmpty() ||
+                (productList.get(0).getQuantity() == 0 && productList.get(1).getQuantity() == 0 &&
+                        productList.get(2).getQuantity() == 0 && productList.get(3).getQuantity() == 0)) {
+
             Snackbar.make(findViewById(android.R.id.content), "Cart is Empty", Snackbar.LENGTH_SHORT).show();
             cartContainer.setVisibility(View.GONE);
             emptyCartText.setVisibility(View.VISIBLE);
         } else {
-            for (int i = 0; i < products.length; i++) {
-
-                setTitles(products[i], productNames[i]);
-                setQuantity(products[i], productQuantity[i]);
-                setImage(products[i], images[i]);
-                setPrice(products[i], productPrices[i]);
+            for (int i = 0; i < productList.size(); i++) {
+                setTitles(productList.get(i), productNames[i]);
+                setQuantity(productList.get(i), productQuantity[i]);
+                setImage(productList.get(i), images[i]);
+                setPrice(productList.get(i), productPrices[i]);
             }
         }
 
-            logoutBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Profile.this, login.class);
-                    startActivity(intent);
-                }
-            });
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, login.class);
+                startActivity(intent);
+            }
+        });
 
-            backBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String arrayProducts = gson.toJson(products);
-                    Intent intent = new Intent(Profile.this, productActivity.class);
-                    intent.putExtra("user", user);
-                    intent.putExtra("pass", pass);
-                    intent.putExtra("products", arrayProducts);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, productActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("pass", pass);
 
-                    startActivity(intent);
-                }
-            });
+                // 2. Pass the ArrayList directly back to the productActivity
+                intent.putExtra("products", productList);
 
-            sortFilterBtn.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Profile.this, CategoryActivity.class);
-                    intent.putExtra("user", user);
-                    intent.putExtra("pass", pass);
-                    startActivity(intent);
-                }
-            });
-        }
-        void setTitles (Product product, TextView names){
-            names.setText(product.getName());
-        }
+                startActivity(intent);
+            }
+        });
 
-        void setQuantity (Product product, TextView quantity){
-            quantity.setText("Quantity: " + product.getQuantity());        }
+        sortFilterBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile.this, CategoryActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("pass", pass);
+                startActivity(intent);
+            }
+        });
+    }
 
-        void setImage (Product product, ImageView image){
-            image.setImageResource(product.getImageURL());
-        }
-        void setPrice(Product product, TextView prices){
-            int totalPrice = product.getPrice() * product.getQuantity();
-            String price = Integer.toString(totalPrice);
-            prices.setText("Total Price: ₱"+ price);
-        }
+    void setTitles(Product product, TextView names) {
+        names.setText(product.getName());
+    }
 
+    void setQuantity(Product product, TextView quantity) {
+        quantity.setText("Quantity: " + product.getQuantity());
+    }
+
+    void setImage(Product product, ImageView image) {
+        image.setImageResource(product.getImageURL());
+    }
+
+    void setPrice(Product product, TextView prices) {
+        int totalPrice = product.getPrice() * product.getQuantity();
+        String price = Integer.toString(totalPrice);
+        prices.setText("Total Price: ₱" + price);
+    }
 }
-
